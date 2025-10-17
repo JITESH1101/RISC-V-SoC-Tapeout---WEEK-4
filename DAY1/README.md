@@ -96,7 +96,7 @@ The day 1 of learning journey began with understanding the critical role of SPIC
 - The complete mathematical model for this behavior was presented through the Threshold Voltage Equation:
   
   
-   ``   Vt​=Vto​+γ((∣−2Φf​+Vsb​∣)^1/2 ​−(∣−2Φf​∣)^1/2 ​)``
+     Vt​=Vto​+γ((∣−2Φf​+Vsb​∣)^1/2 ​−(∣−2Φf​∣)^1/2 ​)
 
 - vThe terms in this equation were defined as follows:
 
@@ -108,9 +108,9 @@ The day 1 of learning journey began with understanding the critical role of SPIC
 
 - The equations for γ and Φf​ were also provided, showing their dependence on physical parameters:
   
-   ``γ=Cox​2qNA​ϵsi``
+   γ=Cox​2qNA​ϵsi
   ​​​
-   ``Φf​=−ϕT​ln(​NA/ni)``​​
+   Φf​=−ϕT​ln(​NA/ni)
 
 - The physical constants and process parameters within these formulas were defined:
 
@@ -132,7 +132,7 @@ The day 1 of learning journey began with understanding the critical role of SPIC
 
 - It was established that the induced charge in the channel, Qi​, is proportional to the overdrive voltage:
   
-             ``Qi​∝(Vgs​−Vt​)``.
+             Qi​∝(Vgs​−Vt​)
 
 - A specific case was set up for analysis with a small Drain-to-Source voltage (Vds​):
 
@@ -163,17 +163,18 @@ The day 1 of learning journey began with understanding the critical role of SPIC
 
 - A first-order analysis of the charge in the channel was performed. The induced charge per unit area at a point 'x', Qi​(x), is not uniform because the channel potential V(x) changes along the length. The equation was refined to:
   
-   ``Qi​(x)∝−([Vgs​−V(x)]−Vt​)``
+  
+   Qi​(x)∝−([Vgs​−V(x)]−Vt​)
 
 This relationship was expressed precisely as:
 
 
-                       ``Qi​(x)=−Cox​([Vgs​−V(x)]−Vt​)``
+                       Qi​(x)=−Cox​([Vgs​−V(x)]−Vt​)
 
 - Here, Cox​ is the gate oxide capacitance per unit area, defined as:
   
 
-                                ``Cox​=ϵox​​/tox``​
+                                Cox​=ϵox​​/tox
 
     - ϵox​: Oxide permittivity (given as relative permittivity 3.97×ϵ0​, or an absolute value of 3.5×10−11F/m).
 
@@ -185,7 +186,7 @@ Id​=(velocity of charge carriers)×(available charge per unit length)
 - This was expressed mathematically as:
   
   
-                  ``Id​=−Vn​(x)⋅Qi​(x)⋅W``
+                  Id​=−Vn​(x)⋅Qi​(x)⋅W
   
 
     - W: The width of the channel (as seen in the top view).
@@ -193,7 +194,7 @@ Id​=(velocity of charge carriers)×(available charge per unit length)
     - Vn​(x): The velocity of electrons at point x, which is the product of electron mobility (μn​) and the electric field (E(x)). The electric field is the gradient of the potential, so
       
       
-                                      ``Vn​(x)=μn​⋅dV​/dx``
+                                      Vn​(x)=μn​⋅dV​/dx
       
 
 - It was stated that by substituting these expressions and integrating over the entire channel length 'L', the complete voltage-current (V-I) relationship for the NMOS transistor could be derived.
