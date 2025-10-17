@@ -103,12 +103,6 @@ This document serves as a detailed record of the concepts and procedures learned
 * **Dynamic Results:** The propagation delays were measured:
     * **Rise Delay:** 148 picoseconds ($ps$).
     * **Fall Delay:** 71 picoseconds ($ps$).
-Wp​/Lp​ Ratio,Wn​/Ln​ Ratio,Rise Delay,Fall Delay,Vm
-Wp​/Lp​,Wn​/Ln​,148 ps,71 ps,0.99V
-2Wp​/Lp​,Wn​/Ln​,80 ps,76 ps,1.2V
-3Wp​/Lp​,Wn​/Ln​,57 ps,80 ps,1.25V
-4Wp​/Lp​,Wn​/Ln​,45 ps,84 ps,1.35V
-5Wp​/Lp​,Wn​/Ln​,37 ps,88 ps,1.4V
 * It was observed that with equal transistor sizing, the fall delay is significantly shorter than the rise delay. This is because electron mobility (NMOS) is higher than hole mobility (PMOS), making the NMOS a stronger driver for the same dimensions.
 
 ---
