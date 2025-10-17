@@ -1,7 +1,5 @@
 # DAY3
-# Detailed Learning Log: CMOS Inverter Analysis
 
-This document serves as a detailed record of the concepts and procedures learned for the analysis of a CMOS inverter, intended for submission and personal reference.
 
 ---
 
@@ -54,6 +52,19 @@ This document serves as a detailed record of the concepts and procedures learned
     ```
 * It was understood that these commands instruct the SPICE simulator to load the transistor models from the file named `tsmc_025um_model.mod`.
 * The principle remains the same for any technology (like Sky130): the accuracy of the simulation is entirely dependent on the quality of the model file that represents the target silicon process.
+* As we did spice simulations for day 1 and day 2 , now we will do it for Cmos logic
+* Cmos - out vs in plot
+  
+<img width="3545" height="2323" alt="cmos_out_vs_in" src="https://github.com/user-attachments/assets/2c79a20a-f5c4-48b0-8e37-d4ed7ba996a4" />
+
+<img width="3964" height="2507" alt="cmos_out_vs_in_plot" src="https://github.com/user-attachments/assets/b1ced426-ec81-4b8f-8b03-58ad02559b69" />
+
+* Cmos - out vs time in plot
+
+<img width="3545" height="2323" alt="cmos_out_vs_timein" src="https://github.com/user-attachments/assets/b16763c4-1d14-45e5-8530-fd8068cb3802" />
+
+<img width="3981" height="2503" alt="cmos_out_vs_timein_plot" src="https://github.com/user-attachments/assets/958f243f-e5c2-4af6-817e-a236bfd6c145" />
+
 
 ---
 
