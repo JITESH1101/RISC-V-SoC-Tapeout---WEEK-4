@@ -73,7 +73,9 @@
 
 - A mathematical derivation for $V_m$ was followed, starting from the current equality condition ($I_{dsp} + I_{dsN} = 0$) with both transistors in saturation.
 - By equating the saturation current equations for the PMOS and NMOS transistors and solving for $V_m$, a simplified expression was derived:
+  
   $$V_m = \frac{R \cdot V_{dd}}{1+R}$$
+  
 - The term $R$ represents the ratio of the current-driving capabilities of the PMOS and NMOS transistors, which is dependent on process parameters and their W/L ratios:
   $$R \approx \frac{k_p'(W/L)_p}{k_n'(W/L)_n}$$
 - This formula demonstrates that $V_m$ is determined by the supply voltage and the relative strengths of the pull-up (PMOS) and pull-down (NMOS) transistors.
