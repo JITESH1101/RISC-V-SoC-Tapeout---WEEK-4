@@ -8,7 +8,7 @@
 * An evaluation of the static behavior and robustness of a CMOS inverter was conducted by analyzing the effects of power supply scaling. The primary tool used for this analysis was a SPICE simulation.
 * To perform this analysis efficiently, a "smart" SPICE deck was constructed. Instead of writing separate simulations for each voltage, a control loop was implemented to automate the process.
 * The circuit netlist was first defined. This included an NMOS transistor (`M2`) and a PMOS transistor (`M1`) configured as a standard inverter.
-    * The PMOS transistor (`M1`) was defined with a width of `$W_p = 0.9375\mu m$` and a length of `$L = 0.25\mu m$`.
+    * The PMOS transistor (`M1`) was defined with a width of `$ W_p = 0.9375\mu m$` and a length of `$L = 0.25\mu m$`.
     * The NMOS transistor (`M2`) was defined with a width of `$W_n = 0.375\mu m$` and a length of `$L = 0.25\mu m$`.
     * A load capacitance of `$10fF$` was attached to the output node `out` to model a realistic load.
     * The simulation was based on the `$tsmc\_025um\_model.mod$` technology file.
