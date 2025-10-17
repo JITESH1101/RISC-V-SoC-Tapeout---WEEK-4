@@ -31,7 +31,8 @@ where Vt​ is the threshold voltage of the device.
    - The analysis then shifted to the relationship between the drain current (Id​) and the gate-source voltage (Vgs​) for both devices.
 
    - For the long-channel device, the relationship between Id​ and Vgs​ in the saturation region was found to be a quadratic dependence. This is consistent with the classic saturation current equation, where Id​ is proportional to (Vgs​−Vt​)2. The Id-Vgs plot for this device exhibits a distinct parabolic curve.
-    Id​=2kn′​​⋅LW​⋅(Vgs​−Vt​)2[1+λVds​]
+     
+     Id​=2kn′​​⋅LW​⋅(Vgs​−Vt​)^2 [1+λVds​]
 
    - In contrast, for the short-channel device, the relationship between Id​ and Vgs​ was observed to be a linear dependence. The Id-Vgs plot for this device is much closer to a straight line than a parabola.
 
@@ -54,26 +55,36 @@ where Vt​ is the threshold voltage of the device.
        - At higher electric fields (when ϵ≥ϵc​), the velocity no longer increases with the field. It saturates and becomes constant at a maximum value, vsat​ (approximately 105 m/s). The reason for this saturation is identified as scattering effects, where carriers collide more frequently with the lattice atoms at high energies, limiting their average velocity.
 
    - This behavior is captured by a more complex velocity model. For continuity, a specific model was presented:
-    vn​(m/s)={μn​⋅ϵ/(1+(ϵ/ϵc​))vsat​​for ϵ≤ϵc​for ϵ≥ϵc​​
+     
+     vn​(m/s)={μn​⋅ϵ/(1+(ϵ/ϵc​))vsat​​for ϵ≤ϵc​for ϵ≥ϵc​​
 
    - The critical electric field, ϵc​, is the point where this transition begins and is defined as ϵc​=μn​2vsat​​.
 
-   - An attempt was made to re-derive the drain current equation using this more accurate velocity model. The fundamental current equation, Id​=−vn​(x)⋅Qi​(x)⋅W, was used, where Qi​(x) is the inversion layer charge. This led to a very complex mathematical expression for Id​:
-    Id​=1+ϵc​⋅LVds​​μn​⋅Cox​​⋅(W/L)[(Vgs​−Vt​)Vds​−Vds2​/2]
+   - An attempt was made to re-derive the drain current equation using this more accurate velocity model. The fundamental current equation,
+     
+     Id​=−vn​(x)⋅Qi​(x)⋅W
+     
+     was used, where Qi​(x) is the inversion layer charge. This led to a very complex mathematical expression for Id​:
+
+     Id​=1+ϵc​⋅LVds​​μn​⋅Cox​​⋅(W/L)[(Vgs​−Vt​)Vds​−Vds^2​/2]
 
   - This formula was noted to be too complex for practical, manual circuit analysis, necessitating a simpler, more unified model.
 
 # Velocity Saturation Drain Current Model
 
-  - To simplify the analysis of short-channel devices, a more practical, unified drain current model was introduced. A variable Vgt​ was first defined as Vgt​=(Vgs​−Vt​).
+  - To simplify the analysis of short-channel devices, a more practical, unified drain current model was introduced. A variable Vgt​ was first defined as
+    
+    Vgt​=(Vgs​−Vt​).
 
   - A distinction was made between device operation modes for long-channel (>250nm) and short-channel (<250nm) technologies. While the Cutoff and Saturation modes are common to both, the linear/resistive mode in short-channel devices is replaced by a Velocity Saturation mode.
 
-  - A single, unified current equation was proposed to cover all modes of operation (except cutoff, where Id​=0 for Vgt​<0):\
+  - A single, unified current equation was proposed to cover all modes of operation (except cutoff, where Id​=0 for Vgt​<0):
     
-    Id​=kn​⋅[(Vgt​⋅Vmin​)−2Vmin2​​]⋅[1+λVds​]
+    
+    Id​=kn​⋅[(Vgt​⋅Vmin​)−Vmin^2/2​​]⋅[1+λVds​]
 
    - The key to this model is the term Vmin​, which is defined as the minimum of three voltage values:
+     
      
       Vmin​=min(Vgt​,Vds​,Vdsat​)
 
@@ -87,7 +98,7 @@ where Vt​ is the threshold voltage of the device.
 
         - Saturation Mode (Long Channel): When Vgt​ is the minimum value, Vmin​=Vgt​. The equation simplifies to the classic saturation formula:
           
-        Id​=kn​⋅[Vgt2​−2Vgt2​​]⋅[1+λVds​]=kn​⋅2Vgt2​​⋅[1+λVds​]
+        Id​=kn​⋅[Vgt^2​−Vgt^2/2​​]⋅[1+λVds​]=kn​⋅Vgt^2/2​​⋅[1+λVds​]
 
         - Velocity Saturation Mode (Short Channel): When Vdsat​ is the minimum value, Vmin​=Vdsat​. The drain current is now limited by this parameter. It was noted that at lower technology nodes, the current appears to increase because kn​ (which includes Cox​) increases as the oxide layer gets thinner.
 
