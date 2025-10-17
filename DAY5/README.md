@@ -3,7 +3,7 @@
 
 ***
 
-## 1. Smart SPICE simulation for power supply variations
+##  Smart SPICE simulation for power supply variations
 
 * An evaluation of the static behavior and robustness of a CMOS inverter was conducted by analyzing the effects of power supply scaling. The primary tool used for this analysis was a SPICE simulation.
 * To perform this analysis efficiently, a "smart" SPICE deck was constructed. Instead of writing separate simulations for each voltage, a control loop was implemented to automate the process.
@@ -33,7 +33,7 @@
 
 ***
 
-## 2. Advantages and disadvantages using low supply voltage
+## Advantages and disadvantages using low supply voltage
 
 * The results from the power supply scaling simulation were analyzed to understand the trade-offs of operating at a lower supply voltage. Two primary advantages and one major disadvantage were identified.
 * **Advantage 1: Increase in Gain**
@@ -55,24 +55,32 @@
 
 ***
 
-## 3. Sky130 Supply Variation Labs
+## Sky130 Supply Variation Labs
 
 * The theoretical principles understood from the generic SPICE simulation were intended to be applied in a practical lab environment using the open-source **Sky130 Process Design Kit (PDK)**.
 * The objective of such a lab would be to characterize a standard cell inverter from the Sky130 library under different supply voltage conditions.
 * This involves performing a similar set of DC sweep simulations, but using the specific model files and device parameters provided by the Sky130 PDK to extract key performance metrics such as voltage gain (`A_v`), switching threshold (`V_m`), and noise margins (`NM_H, NM_L`).
 * The results would provide a practical understanding of how the real-world standard cells used in an SoC tapeout respond to power supply variations.
+* The following pictures show the supply variation plots
+
+<img width="3384" height="2282" alt="supply_variation" src="https://github.com/user-attachments/assets/2d98189d-7b3b-4b72-8f37-06b8dca0077d" />
+
+<img width="3969" height="2497" alt="supply_variation_plot" src="https://github.com/user-attachments/assets/6017c41d-cfdd-4a76-be46-eb29808537e2" />
+
 
 ***
 
-## 4. Sources of variation – Etching process
+## Sources of variation – Etching process
 
 * An investigation into the physical sources of variation in CMOS manufacturing was conducted, focusing first on the **etching process**.
 * In an ideal world, the etching process would perfectly transfer the rectangular shape from the **Ideal Mask** to the physical polysilicon on the wafer.
 * However, in reality, the chemical etching process is imperfect. This results in an **Actual Mask** that is irregularly shaped, with rough and uneven edges. This alters the effective physical dimensions of the gate, specifically its **width (`W`)** and **length (`L`)**.
 * This physical variation directly impacts the transistor's electrical characteristics. The drain current `I_d` is directly proportional to the `W/L` ratio, as shown in the equation for the linear region:
+
     $$
     I_d = \mu C_{ox} \left(\frac{W}{L}\right) \left[(V_{gs} - V_t)V_{ds} - \frac{V_{ds}^2}{2}\right]
     $$
+  
 * Because the etching process introduces random variations into the physical `W` and `L`, the resulting drain current will vary from transistor to transistor.
 * This effect was also considered in the context of an **inverter chain**, where gates at the ends of the chain may experience more pronounced variations than those in the middle due to differences in their surrounding structures.
 
@@ -80,22 +88,24 @@
 
 ***
 
-## 5. Sources of variation – oxide thickness
+##  Sources of variation – oxide thickness
 
 * Another critical source of manufacturing variation that was examined is the **thickness of the gate oxide (`t_{ox}`)**.
 * An **Ideal Oxidation Process** would grow a perfectly uniform layer of oxide. In practice, the **Actual Oxidation Process** is not perfect, leading to variations in the gate oxide thickness across the transistor.
 * This physical variation in `t_{ox}` directly affects the gate oxide capacitance per unit area, `C_{ox}`, since `C_{ox} = \frac{\epsilon_{ox}}{t_{ox}}`.
 * The drain current `I_d` is inversely proportional to the oxide thickness `t_{ox}`, as seen in the rewritten drain current equation:
+  
     $$
     I_d = \mu \frac{\epsilon_{ox}}{t_{ox}} \left(\frac{W}{L}\right) \left[(V_{gs} - V_t)V_{ds} - \frac{V_{ds}^2}{2}\right]
     $$
+  
 * This means that random variations in `t_{ox}` will cause the drive strength of transistors to vary, leading to unpredictable circuit performance.
 
 
 
 ***
 
-## 6. Smart SPICE simulation for device variations
+## Smart SPICE simulation for device variations
 
 * To model the real-world impact of physical variations, a SPICE simulation for **device variation** was performed, considering extreme manufacturing corners.
     * **Strong PMOS – Weak NMOS:** This scenario was simulated by significantly increasing the PMOS width (`W_p = 1.875u`) and decreasing the NMOS width (`W_n = 0.375u`).
@@ -105,7 +115,7 @@
 
 ***
 
-## 7. Conclusion
+##  Conclusion
 
 * The results of the device variation simulation led to several key conclusions about the impact of manufacturing variability on CMOS inverter robustness.
 * **Shift in Switching Threshold (`V_m`):**
@@ -119,9 +129,14 @@
 
 ***
 
-## 8. Sky130 Device Variation Labs
+## Sky130 Device Variation Labs
 
 * The final practical exercise was to apply the understanding of device variation to the **Sky130 PDK**.
 * This lab would involve using the specific process corner model files provided with the Sky130 library, such as **FF (Fast-Fast)**, **SS (Slow-Slow)**, **SF (Slow-Fast)**, and **FS (Fast-Slow)**.
 * The objective would be to simulate a Sky130 standard cell inverter at each of these corners and plot its VTC.
 * This analysis allows for the extraction of the real-world range of `V_m`, noise margins, and propagation delays for the library cells. This process is essential for guaranteeing that a designed chip will function correctly across all possible manufacturing variations.
+* The following pictures shows the plot of device variations
+
+<img width="3969" height="2505" alt="device_Variation" src="https://github.com/user-attachments/assets/49e1e56b-f543-4952-91e8-bea3663dd628" />
+
+<img width="3969" height="2505" alt="device_Variation_plot" src="https://github.com/user-attachments/assets/a61a17e6-3585-4895-b165-18f0cce62f30" />
