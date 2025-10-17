@@ -72,3 +72,15 @@ The static behavior and robustness of a CMOS inverter were evaluated by observin
 
 ## Sky130 Noise Margin Lab
 
+* Just as previous labs , we use ngspice and source the file starting with day4 in designs to start noise margin calculation as shown below
+
+<img width="3470" height="2121" alt="noise_margin" src="https://github.com/user-attachments/assets/be838269-7600-46c1-88ca-c8aedfee1311" />
+
+Now the plot is as follows
+
+<img width="3979" height="2500" alt="noise_margin_plot" src="https://github.com/user-attachments/assets/e21505af-70d2-4642-89d9-6a313e7964de" />
+
+By clicking on the slope of logic 1 and logic 0 and we get VOH,VIL,VIH,VOL, so that we can calculate noise margin
+
+<img width="3979" height="2500" alt="noise_margin_calculation" src="https://github.com/user-attachments/assets/44e39603-ae7a-471f-ab25-2383eb2da1d7" />
+
