@@ -1,10 +1,6 @@
 # DAY3
 
 
-# Learnings from the RISC-V SoC Tapeout Program: CMOS Inverter Analysis
-
-This document details the key concepts learned during the CMOS inverter analysis module, from basic SPICE deck creation to static and dynamic performance evaluation and its application in digital systems.
-
 ---
 
 ## SPICE Deck Creation for CMOS Inverter
