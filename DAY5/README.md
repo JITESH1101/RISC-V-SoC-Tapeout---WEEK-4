@@ -30,7 +30,6 @@
 * The results of all five DC analyses were plotted on a single graph. The `plot` command was used to display the output voltage (`dc1.out`, `dc2.out`, etc.) versus the input voltage. This generated a family of Voltage Transfer Characteristic (VTC) curves, with each curve corresponding to a different supply voltage.
 * The resulting graph clearly showed that as the supply voltage `V_{dd}` was scaled down from `2.5V`, the VTC curve shifted and its transition region became steeper.
 
-!(https://i.imgur.com/8QG9s0j.jpg)
 
 ***
 
@@ -41,14 +40,18 @@
     * It was observed that as the supply voltage was lowered, the transition region of the VTC became significantly steeper.
     * A steeper transition region corresponds to a higher voltage gain. An example calculation showed that the absolute gain `|gain|` reached **11.53**, which represented a **56% improvement**. This increased gain contributes to better noise immunity.
 * **Advantage 2: Significant Reduction in Energy**
-    * The most compelling advantage of lowering the supply voltage is the dramatic reduction in power consumption.
-    * The dynamic energy consumed by a CMOS circuit is governed by the formula `$E = \frac{1}{2} C V^2$`, where `$C$` is the load capacitance and `$V$` is the supply voltage.
+    * The most compelling advantage of lowering the supply voltage is the dramatic reduction in power consumption
+    * The dynamic energy consumed by a CMOS circuit is governed by the formula
+      
+                       `E = \frac{1}{2} C V^2` ,
+      
+      where `C` is the load capacitance and `V` is the supply voltage.
     * Because the energy is proportional to the *square* of the voltage, even a small decrease in `$V_{dd}$` yields a large energy saving. For instance, reducing the supply voltage to `$0.5V$` was shown to result in a **96% reduction in energy consumption**.
 * **Disadvantage 1: Performance Impact**
     * The primary drawback of supply voltage scaling is the negative impact on circuit performance, specifically its speed.
     * Lowering the supply voltage reduces the drive current of the transistors, which means it takes longer to charge and discharge the load capacitance. This leads to increased propagation delays. An example measurement showed a **rise delay = 66ps** and a **fall delay = 78ps** at the lower voltage, indicating the inverter has become slower.
 
-!(https://i.imgur.com/u7sU00z.jpg)
+
 
 ***
 
@@ -56,7 +59,7 @@
 
 * The theoretical principles understood from the generic SPICE simulation were intended to be applied in a practical lab environment using the open-source **Sky130 Process Design Kit (PDK)**.
 * The objective of such a lab would be to characterize a standard cell inverter from the Sky130 library under different supply voltage conditions.
-* This involves performing a similar set of DC sweep simulations, but using the specific model files and device parameters provided by the Sky130 PDK to extract key performance metrics such as voltage gain (`$A_v$`), switching threshold (`$V_m$`), and noise margins (`$NM_H, NM_L$`).
+* This involves performing a similar set of DC sweep simulations, but using the specific model files and device parameters provided by the Sky130 PDK to extract key performance metrics such as voltage gain (`A_v`), switching threshold (`V_m`), and noise margins (`NM_H, NM_L`).
 * The results would provide a practical understanding of how the real-world standard cells used in an SoC tapeout respond to power supply variations.
 
 ***
@@ -65,56 +68,54 @@
 
 * An investigation into the physical sources of variation in CMOS manufacturing was conducted, focusing first on the **etching process**.
 * In an ideal world, the etching process would perfectly transfer the rectangular shape from the **Ideal Mask** to the physical polysilicon on the wafer.
-* However, in reality, the chemical etching process is imperfect. This results in an **Actual Mask** that is irregularly shaped, with rough and uneven edges. This alters the effective physical dimensions of the gate, specifically its **width (`$W$`)** and **length (`$L$`)**.
-* This physical variation directly impacts the transistor's electrical characteristics. The drain current `$I_d$` is directly proportional to the `$W/L$` ratio, as shown in the equation for the linear region:
+* However, in reality, the chemical etching process is imperfect. This results in an **Actual Mask** that is irregularly shaped, with rough and uneven edges. This alters the effective physical dimensions of the gate, specifically its **width (`W`)** and **length (`L`)**.
+* This physical variation directly impacts the transistor's electrical characteristics. The drain current `I_d` is directly proportional to the `W/L` ratio, as shown in the equation for the linear region:
     $$
     I_d = \mu C_{ox} \left(\frac{W}{L}\right) \left[(V_{gs} - V_t)V_{ds} - \frac{V_{ds}^2}{2}\right]
     $$
-* Because the etching process introduces random variations into the physical `$W$` and `$L$`, the resulting drain current will vary from transistor to transistor.
+* Because the etching process introduces random variations into the physical `W` and `L`, the resulting drain current will vary from transistor to transistor.
 * This effect was also considered in the context of an **inverter chain**, where gates at the ends of the chain may experience more pronounced variations than those in the middle due to differences in their surrounding structures.
 
-![Image comparing an ideal mask to an actual etched mask.](https://i.imgur.com/oD4jCjU.jpg)
+
 
 ***
 
 ## 5. Sources of variation – oxide thickness
 
-* Another critical source of manufacturing variation that was examined is the **thickness of the gate oxide (`$t_{ox}$`)**.
+* Another critical source of manufacturing variation that was examined is the **thickness of the gate oxide (`t_{ox}`)**.
 * An **Ideal Oxidation Process** would grow a perfectly uniform layer of oxide. In practice, the **Actual Oxidation Process** is not perfect, leading to variations in the gate oxide thickness across the transistor.
-* This physical variation in `$t_{ox}$` directly affects the gate oxide capacitance per unit area, `$C_{ox}$`, since `$C_{ox} = \frac{\epsilon_{ox}}{t_{ox}}$`.
-* The drain current `$I_d$` is inversely proportional to the oxide thickness `$t_{ox}$`, as seen in the rewritten drain current equation:
+* This physical variation in `t_{ox}` directly affects the gate oxide capacitance per unit area, `C_{ox}`, since `C_{ox} = \frac{\epsilon_{ox}}{t_{ox}}`.
+* The drain current `I_d` is inversely proportional to the oxide thickness `t_{ox}`, as seen in the rewritten drain current equation:
     $$
     I_d = \mu \frac{\epsilon_{ox}}{t_{ox}} \left(\frac{W}{L}\right) \left[(V_{gs} - V_t)V_{ds} - \frac{V_{ds}^2}{2}\right]
     $$
-* This means that random variations in `$t_{ox}$` will cause the drive strength of transistors to vary, leading to unpredictable circuit performance.
+* This means that random variations in `t_{ox}` will cause the drive strength of transistors to vary, leading to unpredictable circuit performance.
 
-![Image showing variation in gate oxide thickness.](https://i.imgur.com/n6iG9uB.jpg)
+
 
 ***
 
 ## 6. Smart SPICE simulation for device variations
 
 * To model the real-world impact of physical variations, a SPICE simulation for **device variation** was performed, considering extreme manufacturing corners.
-    * **Strong PMOS – Weak NMOS:** This scenario was simulated by significantly increasing the PMOS width (`$W_p = 1.875u$`) and decreasing the NMOS width (`$W_n = 0.375u$`).
-    * **Weak PMOS – Strong NMOS:** This is the opposite corner, where the PMOS is weaker and the NMOS is stronger. This was simulated by swapping the widths (`$W_p = 0.375u$`, `$W_n = 1.875u$`).
+    * **Strong PMOS – Weak NMOS:** This scenario was simulated by significantly increasing the PMOS width (`W_p = 1.875u`) and decreasing the NMOS width (`W_n = 0.375u`).
+    * **Weak PMOS – Strong NMOS:** This is the opposite corner, where the PMOS is weaker and the NMOS is stronger. This was simulated by swapping the widths (`W_p = 0.375u`, `W_n = 1.875u`).
 * A series of DC sweeps were run to generate a family of VTC curves, illustrating the full range of static behavior expected due to process variations.
 
-![Image showing VTC plots for strong PMOS/weak NMOS vs weak PMOS/strong NMOS.](https://i.imgur.com/X4uN0sL.jpg)
 
 ***
 
 ## 7. Conclusion
 
 * The results of the device variation simulation led to several key conclusions about the impact of manufacturing variability on CMOS inverter robustness.
-* **Shift in Switching Threshold (`$V_m$`):**
-    * The most prominent effect observed was a significant horizontal **shift in the switching threshold (`$V_m$`)**.
+* **Shift in Switching Threshold (`V_m`):**
+    * The most prominent effect observed was a significant horizontal **shift in the switching threshold (`V_m`)**.
     * A Strong PMOS / Weak NMOS combination shifts the VTC to the right, while a Weak PMOS / Strong NMOS combination shifts it to the left.
-* **Variation in Noise Margins (`$NM_H$` and `$NM_L$`):**
+* **Variation in Noise Margins (`NM_H` and `NM_L`):**
     * This shift in the VTC directly impacts the circuit's **noise margins**, which are a critical measure of its robustness.
-    * **Variation in Noise Margin Low (`$NM_L$`)** and **Variation in Noise Margin High (`$NM_H$`)** were observed, indicating that the circuit's ability to tolerate noise becomes inconsistent across different process corners.
+    * **Variation in Noise Margin Low (`NM_L`)** and **Variation in Noise Margin High (`NM_H`)** were observed, indicating that the circuit's ability to tolerate noise becomes inconsistent across different process corners.
 * In summary, it was concluded that physical manufacturing variations directly degrade circuit robustness by altering the switching point and reducing noise margins, which can lead to functional failures.
 
-![Image showing VTC plots annotated with variations in Vm, NM_H, and NM_L.](https://i.imgur.com/Y82hFfN.jpg)
 
 ***
 
@@ -123,4 +124,4 @@
 * The final practical exercise was to apply the understanding of device variation to the **Sky130 PDK**.
 * This lab would involve using the specific process corner model files provided with the Sky130 library, such as **FF (Fast-Fast)**, **SS (Slow-Slow)**, **SF (Slow-Fast)**, and **FS (Fast-Slow)**.
 * The objective would be to simulate a Sky130 standard cell inverter at each of these corners and plot its VTC.
-* This analysis allows for the extraction of the real-world range of `$V_m$`, noise margins, and propagation delays for the library cells. This process is essential for guaranteeing that a designed chip will function correctly across all possible manufacturing variations.
+* This analysis allows for the extraction of the real-world range of `V_m`, noise margins, and propagation delays for the library cells. This process is essential for guaranteeing that a designed chip will function correctly across all possible manufacturing variations.
