@@ -92,7 +92,10 @@
 
 * Another critical source of manufacturing variation that was examined is the **thickness of the gate oxide (`t_{ox}`)**.
 * An **Ideal Oxidation Process** would grow a perfectly uniform layer of oxide. In practice, the **Actual Oxidation Process** is not perfect, leading to variations in the gate oxide thickness across the transistor.
-* This physical variation in `t_{ox}` directly affects the gate oxide capacitance per unit area, `C_{ox}`, since `C_{ox} = \frac{\epsilon_{ox}}{t_{ox}}`.
+* This physical variation in `t_{ox}` directly affects the gate oxide capacitance per unit area, `C_{ox}`, since
+
+  `C_{ox} = \frac{\epsilon_{ox}}{t_{ox}}`.
+  
 * The drain current `I_d` is inversely proportional to the oxide thickness `t_{ox}`, as seen in the rewritten drain current equation:
   
     $$
