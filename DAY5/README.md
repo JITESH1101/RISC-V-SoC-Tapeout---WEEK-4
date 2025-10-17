@@ -8,9 +8,9 @@
 * An evaluation of the static behavior and robustness of a CMOS inverter was conducted by analyzing the effects of power supply scaling. The primary tool used for this analysis was a SPICE simulation.
 * To perform this analysis efficiently, a "smart" SPICE deck was constructed. Instead of writing separate simulations for each voltage, a control loop was implemented to automate the process.
 * The circuit netlist was first defined. This included an NMOS transistor (`M2`) and a PMOS transistor (`M1`) configured as a standard inverter.
-    * The PMOS transistor (`M1`) was defined with a width of `$ W_p = 0.9375\mu m$` and a length of `$L = 0.25\mu m$`.
-    * The NMOS transistor (`M2`) was defined with a width of `$W_n = 0.375\mu m$` and a length of `$L = 0.25\mu m$`.
-    * A load capacitance of `$10fF$` was attached to the output node `out` to model a realistic load.
+    * The PMOS transistor (`M1`) was defined with a width of ` W_p = 0.9375\mu ` and a length of `L = 0.25\mu `.
+    * The NMOS transistor (`M2`) was defined with a width of `W_n = 0.375\mu ` and a length of `L = 0.25\mu `.
+    * A load capacitance of `10fF` was attached to the output node `out` to model a realistic load.
     * The simulation was based on the `$tsmc\_025um\_model.mod$` technology file.
 * A `.control` block was used to program the simulation steps:
     ```spice
@@ -28,7 +28,7 @@
     .endc
     ```
 * The results of all five DC analyses were plotted on a single graph. The `plot` command was used to display the output voltage (`dc1.out`, `dc2.out`, etc.) versus the input voltage. This generated a family of Voltage Transfer Characteristic (VTC) curves, with each curve corresponding to a different supply voltage.
-* The resulting graph clearly showed that as the supply voltage `$V_{dd}$` was scaled down from `$2.5V$`, the VTC curve shifted and its transition region became steeper.
+* The resulting graph clearly showed that as the supply voltage `V_{dd}` was scaled down from `2.5V`, the VTC curve shifted and its transition region became steeper.
 
 !(https://i.imgur.com/8QG9s0j.jpg)
 
@@ -39,7 +39,7 @@
 * The results from the power supply scaling simulation were analyzed to understand the trade-offs of operating at a lower supply voltage. Two primary advantages and one major disadvantage were identified.
 * **Advantage 1: Increase in Gain**
     * It was observed that as the supply voltage was lowered, the transition region of the VTC became significantly steeper.
-    * A steeper transition region corresponds to a higher voltage gain. An example calculation showed that the absolute gain `$|gain|$` reached **11.53**, which represented a **56% improvement**. This increased gain contributes to better noise immunity.
+    * A steeper transition region corresponds to a higher voltage gain. An example calculation showed that the absolute gain `|gain|` reached **11.53**, which represented a **56% improvement**. This increased gain contributes to better noise immunity.
 * **Advantage 2: Significant Reduction in Energy**
     * The most compelling advantage of lowering the supply voltage is the dramatic reduction in power consumption.
     * The dynamic energy consumed by a CMOS circuit is governed by the formula `$E = \frac{1}{2} C V^2$`, where `$C$` is the load capacitance and `$V$` is the supply voltage.
