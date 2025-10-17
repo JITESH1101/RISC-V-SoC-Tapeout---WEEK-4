@@ -307,6 +307,127 @@ Id​=21​kn′​LW​(Vgs​−Vt​)2(1+λVds​)
 
 The term λ is the channel length modulation parameter. This term introduces a slight dependence of Id​ on Vds​ in the saturation region, resulting in a non-zero slope on the I-V curves.
 
+# Basic SPICE setup
+
+- The overall workflow for a SPICE simulation was illustrated. The process involves combining two key inputs to be processed by the SPICE software.
+
+- The two inputs are:
+
+    - SPICE model parameters: These are the physical parameters defined in a technology file that describe how a transistor behaves. The parameters are directly related to the variables in the derived equations, such as the threshold voltage (Vto​), body effect coefficient (γ), process transconductance (kn′​), and channel length modulation (λ).
+
+    - SPICE netlist: This is a text-based description of the circuit, defining the components (transistors, resistors, etc.) and how they are interconnected.
+
+- These inputs are fed into the SPICE software, which acts as a solver.
+
+- The output of the simulation is typically a set of data points or graphs, such as the characteristic IdsN​ vs. VdsN​ curves for a transistor, which visually represent the circuit's behavior.
+
+# Circuit description in SPICE syntax
+
+- The syntax for creating a SPICE netlist was explained by dissecting the description of a simple circuit. The circuit consisted of a MOSFET (M1), a resistor (R1), and two voltage sources (Vin, Vdd). The connection points in the circuit are referred to as nodes.
+
+- The netlist description for the NMOS transistor M1 was analyzed in detail: ``M1 vdd n1 0 0 nmos W=1.8u L=1.2u``
+
+    - ``M1``: The name of the component. The first letter 'M' signifies a MOSFET.
+
+    - ``vdd``: The node connected to the Drain terminal.
+
+    - ``n1``: The node connected to the Gate terminal.
+
+    - ``0``: The node connected to the Source terminal. (Node 0 is conventionally ground).
+
+    - ``0``: The node connected to the Substrate (Bulk) terminal.
+
+    - ``nmos``: The name of the model to be used for this transistor, which must be defined in a technology file.
+
+    - ``W=1.8u``: The Width of the transistor gate is 1.8 micrometers.
+
+    - ``L=1.2u``: The Length of the transistor gate is 1.2 micrometers.
+
+- The description for the resistor R1 was also detailed: ``R1 in n1 55``
+
+    - ``R1``: The name of the resistor ('R' signifies a resistor).
+
+    - ``in``: The node for the first terminal.
+
+    - ``n1``: The node for the second terminal.
+
+    - ``55``: The resistance value in ohms.
+
+- Finally, the voltage sources were explained: ``Vdd vdd 0 2.5`` and ``Vin in 0 2.5``
+
+    - ``Vdd / Vin``: The name of the source ('V' signifies a voltage source).
+
+    - ``vdd / in``: The node for the positive terminal.
+
+    - ``0``: The node for the negative terminal.
+
+    - ``2.5``: The DC voltage source value in volts.
+
+# Define technology parameters
+
+- It was shown how the physical device parameters from the theoretical equations are provided to the SPICE simulator. This is done through a Technology File.
+
+- The technology file contains ``.MODEL`` statements (or cards) that define a set of parameters for a given model name (e.g., ``nmos`` or ``pmos``).
+
+- The SPICE netlist references this model name (as seen with ``M1 ... nmos ...``).
+
+- The parameters inside the ``.MODEL`` card correspond to the variables in the semiconductor physics equations. For example:
+
+    - ``VTH0`` in the model file corresponds to Vto​ (zero-bias threshold voltage).
+
+    - ``GAMMA`` corresponds to γ (body effect coefficient).
+
+    - ``TOX`` (oxide thickness) is used to calculate Cox​.
+
+    - Other parameters like U0 (mobility) are used to determine kn′​.
+
+- This entire set of model definitions is packaged in a single file (e.g., ``xxxx_025um_model.mod``). This file is then included in the main simulation file.
+
+# First SPICE simulation
+
+- The components of a complete SPICE simulation file were brought together. The file typically consists of:
+
+     - NETLIST Description: The lines defining the circuit components and their connectivity, as detailed previously (``M1, R1, Vdd, Vin``).
+
+     - Model Inclusion: A command to include the technology file. The syntax shown was .LIB "xxxx_025um_model.mod" CMOS_MODELS, which links the netlist to the file containing the necessary .MODEL statements.
+
+     - Simulation Commands: (Mentioned by the slide title but not shown in detail) These are commands that tell SPICE what kind of analysis to perform, such as ``.DC`` for a DC sweep, .TRAN for a transient analysis, or .AC for a frequency analysis.
+
+- The overall concept was reinforced: SPICE simulations are the practical application used to solve the complex, derived drain current equations for any given set of circuit conditions (Vgs​, Vds​, etc.), allowing for a complete and accurate analysis of the circuit's behavior.
+
+# SPICE Lab with sky130 models
+
+- First clone  the following repository to get all the library files
+
+```
+git clone https://github.com/kunalg123/sky130CircuitDesignWorkshop.git
+```
+<img width="2321" height="877" alt="cloning_git" src="https://github.com/user-attachments/assets/90297cd5-8d58-482c-8ffe-e0ebae7b3cb4" />
+
+the following are the given nfet model library and spice files 
+
+<img width="2160" height="458" alt="nfet_model_files" src="https://github.com/user-attachments/assets/0fd095e2-4b15-42ec-89c2-c4ef3301e1b3" />
+
+Now lets run the following spice file
+
+<img width="1986" height="1575" alt="day1_nfet" src="https://github.com/user-attachments/assets/fbbdad62-57c4-4806-a582-47a806fa6300" />
+
+using ``Ngspice`` follow as the picture shows
+
+<img width="2677" height="2318" alt="ID_VS_VDS_plot" src="https://github.com/user-attachments/assets/e7686750-e845-435f-8786-d3082b664ceb" />
+
+enter the following command
+
+```
+plot -vdd#branch
+```
+
+We will get the following plot
+
+<img width="3968" height="2504" alt="id_Vs_vds_plot" src="https://github.com/user-attachments/assets/00833aca-ee1b-4c7b-b969-ddbdfadd2d83" />
+
+
+
 
 
 
