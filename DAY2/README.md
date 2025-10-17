@@ -1,5 +1,7 @@
 # DAY2
 
+This learning module for Day 2 bridges the gap between fundamental MOS device physics and the behavior of a core digital logic gate. The investigation began by examining the Velocity Saturation Effect in short-channel devices, noting how it causes a shift from a quadratic to a linear dependence of drain current on gate voltage. This advanced device characteristic was then used as the foundation for a detailed analysis of the CMOS inverter. The session culminated in a step-by-step graphical derivation of the inverter's complete Voltage Transfer Characteristic (VTC) by systematically merging the load curves of the constituent PMOS and NMOS transistors.
+
 # SPICE Simulation for Lower Nodes
 
 - A SPICE simulation was performed to analyze the characteristics of a MOS device with a channel width (W) of 1.8μm and a channel length (L) of 1.2μm. This results in a W/L ratio of 1.5.
