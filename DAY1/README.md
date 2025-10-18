@@ -57,6 +57,10 @@ The day 1 of learning journey began with understanding the critical role of SPIC
     - D: Drain
 
     - B: Body (or Bulk/Substrate)
+      
+
+<img width="1367" height="1479" alt="Screenshot from 2025-10-18 10-26-36" src="https://github.com/user-attachments/assets/2e641269-a200-49d1-84fe-0ccca6ca0d0a" />
+
 
 # Strong inversion and threshold voltage
 
@@ -79,6 +83,8 @@ The day 1 of learning journey began with understanding the critical role of SPIC
 - The specific Gate-to-Source voltage (Vgs​) at which strong inversion occurs is defined as the threshold voltage, denoted as Vt​.
 
 - Once Vgs​ surpasses Vt​, a continuous n-channel is formed. Electrons are drawn from the heavily doped n+ source region into this channel. This channel now provides a conductive path from the Source to the Drain, and its conductivity is modulated by the applied gate voltage, Vgs​. It was noted that a further increase in Vgs​ beyond Vt​ primarily increases the charge in the channel without changing the depletion layer width.
+
+<img width="1367" height="1479" alt="Screenshot from 2025-10-18 10-27-40" src="https://github.com/user-attachments/assets/8c19b259-6705-4d22-a5ae-fcfe887593d8" />
 
 
 # Threshold voltage with positive substrate potential
@@ -322,6 +328,10 @@ The term λ is the channel length modulation parameter. This term introduces a s
 - The output of the simulation is typically a set of data points or graphs, such as the characteristic IdsN​ vs. VdsN​ curves for a transistor, which visually represent the circuit's behavior.
 
 # Circuit description in SPICE syntax
+
+
+<img width="2823" height="1316" alt="Screenshot from 2025-10-18 10-28-16" src="https://github.com/user-attachments/assets/abdd242d-abf3-4d84-a129-5d2942284262" />
+
 
 - The syntax for creating a SPICE netlist was explained by dissecting the description of a simple circuit. The circuit consisted of a MOSFET (M1), a resistor (R1), and two voltage sources (Vin, Vdd). The connection points in the circuit are referred to as nodes.
 
