@@ -26,6 +26,9 @@
 
 ---
 
+<img width="3565" height="2032" alt="Screenshot from 2025-10-15 23-52-56" src="https://github.com/user-attachments/assets/206d8e09-1650-4d9b-bfd8-a81d1187a65e" />
+
+
 ## SPICE Simulation for CMOS Inverter
 
 * Once the SPICE deck was constructed, simulation commands were added to perform circuit analysis.
@@ -139,3 +142,8 @@
 * A fundamental STA **setup analysis** between a launch flop and a capture flop was examined.
 * **SLACK** was defined as the margin by which timing is met: **Slack = Data Required Time - Data Arrival Time**. For a design to work, the slack must be positive or zero.
 * The takeaway was that the delays of the inverters and buffers, controlled by transistor sizing, are critical inputs to the STA calculation and are fundamental to designing a functional high-frequency chip (e.g., at 1 GHz, where the clock period is only 1ns).
+
+<img width="3548" height="2034" alt="Screenshot from 2025-10-17 19-47-44" src="https://github.com/user-attachments/assets/d1a1a0b6-1820-44cd-b696-663617c3788d" />
+
+<img width="3548" height="2034" alt="Screenshot from 2025-10-17 19-48-07" src="https://github.com/user-attachments/assets/3bf29e81-7847-4894-90f9-98d6c3a12ee1" />
+
