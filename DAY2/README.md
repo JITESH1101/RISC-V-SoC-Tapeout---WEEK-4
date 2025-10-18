@@ -6,6 +6,8 @@ This learning module for Day 2 bridges the gap between fundamental MOS device ph
 
 - A SPICE simulation was performed to analyze the characteristics of a MOS device with a channel width (W) of 1.8μm and a channel length (L) of 1.2μm. This results in a W/L ratio of 1.5.
 
+  <img width="3625" height="1981" alt="Screenshot from 2025-10-15 21-17-31" src="https://github.com/user-attachments/assets/45918f9f-4667-4999-9e02-96237c2fd93b" />
+
 - The output characteristics of the device were plotted, showing the drain current (Id​) in microamperes (μA) versus the drain-source voltage (Vds​) in volts (V). Multiple curves were generated, each corresponding to a different constant gate-source voltage (Vgs​).
 
 - The plot is clearly divided into two primary regions of operation for the transistor: the linear (or triode) region and the saturation region.
@@ -71,6 +73,9 @@ where Vt​ is the threshold voltage of the device.
      Id​=1+ϵc​⋅LVds​​μn​⋅Cox​​⋅(W/L)[(Vgs​−Vt​)Vds​−Vds^2​/2]
 
   - This formula was noted to be too complex for practical, manual circuit analysis, necessitating a simpler, more unified model.
+
+<img width="3533" height="1984" alt="Screenshot from 2025-10-15 21-35-25" src="https://github.com/user-attachments/assets/87128645-0763-4c8a-870a-530a4d2d8ac1" />
+
 
 # Velocity Saturation Drain Current Model
 
@@ -204,6 +209,8 @@ We see that from this plot the threshold voltage is around 0.7 volts
 
        - The PMOS I-V curve plots −IdsP​ vs −VdsP​ for various negative values of VgsP​. This convention is used to display the curves in the first quadrant, making them visually comparable to the NMOS curves.
          
+<img width="3418" height="2032" alt="Screenshot from 2025-10-15 22-00-53" src="https://github.com/user-attachments/assets/80e94b0e-044d-4304-b89d-88484891c031" />
+
 
 # Step 1 – Convert PMOS Gate-Source-Voltage to Vin​
 
@@ -215,6 +222,8 @@ We see that from this plot the threshold voltage is around 0.7 volts
 
   - This mapping was used to transform the family of PMOS I-V curves. The original curves, which were parameterized by different VgsP​ values (e.g., VgsP1​,VgsP2​), were re-labeled with their corresponding Vin​ values (e.g., Vin​=2V,Vin​=1.5V). This results in a set of PMOS characteristic curves parameterized directly by the inverter input voltage.
 
+<img width="3544" height="2032" alt="Screenshot from 2025-10-15 22-38-33" src="https://github.com/user-attachments/assets/d77dc1da-90e6-43e6-8941-0b3e724cf3e3" />
+
 
 # Step 2 & Step 3 – Convert PMOS and NMOS Drain-Source-Voltage to Vout​
 
@@ -223,6 +232,12 @@ We see that from this plot the threshold voltage is around 0.7 volts
    -  For the NMOS transistor: The conversion was straightforward. Since it was established that VdsN​=Vout​, the x-axis of the NMOS I-V plot was simply relabeled from VdsN​ to Vout​. The family of curves, already parameterized by Vin​ (since VgsN​=Vin​), now represents the Load Curve for the NMOS transistor.
 
    -  For the PMOS transistor: The conversion used the relationship VdsP​=Vout​−Vdd​. This means that the PMOS curves, which were originally plotted against −VdsP​, needed to be transformed to be plotted against Vout​. This effectively mirrors and shifts the curves along the voltage axis. The resulting graph, showing IdsP​ (or IdsN​) versus Vout​ for various Vin​ values, is the Load Curve for the PMOS transistor.
+
+<img width="3565" height="2032" alt="Screenshot from 2025-10-15 22-41-23" src="https://github.com/user-attachments/assets/fb5e3094-9645-4036-94ef-58f1979442cd" />
+
+<img width="3565" height="2032" alt="Screenshot from 2025-10-15 22-42-18" src="https://github.com/user-attachments/assets/fb3b3be6-a589-40b8-8e37-4f655689b1a6" />
+
+
 
 # Step 4 – Merge PMOS – NMOS Load Curves and Plot VTC
 
@@ -251,3 +266,5 @@ We see that from this plot the threshold voltage is around 0.7 volts
    - These points were then plotted on a new set of axes with Vout​ versus Vin​. Connecting these points produced the final Voltage Transfer Characteristic (VTC) curve for the CMOS inverter.
 
   The VTC plot was annotated to show the operating regions of the transistors at different points along the curve, illustrating how the NMOS and PMOS transition between cutoff, linear, and saturation modes as Vin​ sweeps from low to high.
+
+<img width="3565" height="2032" alt="Screenshot from 2025-10-15 22-45-46" src="https://github.com/user-attachments/assets/057f4f25-52b1-4bf4-aaa5-1e37dd5173e3" />
