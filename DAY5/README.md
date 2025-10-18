@@ -30,6 +30,8 @@
 * The results of all five DC analyses were plotted on a single graph. The `plot` command was used to display the output voltage (`dc1.out`, `dc2.out`, etc.) versus the input voltage. This generated a family of Voltage Transfer Characteristic (VTC) curves, with each curve corresponding to a different supply voltage.
 * The resulting graph clearly showed that as the supply voltage `V_{dd}` was scaled down from `2.5V`, the VTC curve shifted and its transition region became steeper.
 
+<img width="3526" height="1979" alt="Screenshot from 2025-10-17 22-27-58" src="https://github.com/user-attachments/assets/14b3d70c-3c3f-45ec-98a9-c5a36a539363" />
+
 
 ***
 
@@ -51,6 +53,9 @@
     * The primary drawback of supply voltage scaling is the negative impact on circuit performance, specifically its speed.
     * Lowering the supply voltage reduces the drive current of the transistors, which means it takes longer to charge and discharge the load capacitance. This leads to increased propagation delays. An example measurement showed a **rise delay = 66ps** and a **fall delay = 78ps** at the lower voltage, indicating the inverter has become slower.
 
+<img width="3526" height="1979" alt="Screenshot from 2025-10-17 22-31-26" src="https://github.com/user-attachments/assets/2de66608-27cf-452a-b59d-fc002847f0fb" />
+
+<img width="3526" height="1979" alt="Screenshot from 2025-10-17 22-34-13" src="https://github.com/user-attachments/assets/0f35dea0-8241-4f07-9e3b-364263c461cb" />
 
 
 ***
@@ -84,6 +89,7 @@
 * Because the etching process introduces random variations into the physical `W` and `L`, the resulting drain current will vary from transistor to transistor.
 * This effect was also considered in the context of an **inverter chain**, where gates at the ends of the chain may experience more pronounced variations than those in the middle due to differences in their surrounding structures.
 
+<img width="3548" height="1937" alt="Screenshot from 2025-10-17 22-38-46" src="https://github.com/user-attachments/assets/2b762c2a-93f2-42ac-8292-b1f75c00f449" />
 
 
 ***
@@ -104,6 +110,13 @@
   
 * This means that random variations in `t_{ox}` will cause the drive strength of transistors to vary, leading to unpredictable circuit performance.
 
+<img width="3548" height="1937" alt="Screenshot from 2025-10-17 22-40-10" src="https://github.com/user-attachments/assets/de1c55b5-720b-4b03-8dac-db01227acc72" />
+
+<img width="3548" height="1937" alt="Screenshot from 2025-10-17 22-40-29" src="https://github.com/user-attachments/assets/ff6c7ac8-2dc0-4672-b33d-dcab7891eaac" />
+
+<img width="3548" height="1937" alt="Screenshot from 2025-10-17 22-41-04" src="https://github.com/user-attachments/assets/8cb6f2ce-c0c3-4756-8f12-cf74821cac7c" />
+
+<img width="3548" height="1937" alt="Screenshot from 2025-10-17 22-41-24" src="https://github.com/user-attachments/assets/8a285e4d-69b2-435f-b0d5-eca75097f3bb" />
 
 
 ***
