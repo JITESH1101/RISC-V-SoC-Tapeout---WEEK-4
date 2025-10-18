@@ -4,13 +4,18 @@ This week, a critical bridge connecting fundamental device physics to practical,
 
 DAY1- BASICS ON NMOS DRAIN CURRENT Id vs Vds -  https://github.com/JITESH1101/RISC-V-SoC-Tapeout---WEEK-4/blob/main/DAY1/README.md
 
+
 DAY2- VELOCITY SATURATION AND BASICS ON CMOS INVERTER VTC -  https://github.com/JITESH1101/RISC-V-SoC-Tapeout---WEEK-4/blob/main/DAY2/README.md
+
 
 DAY3- CMOS SWITCHING THRESHOLD AND DYNAMIC SIMULATIONS -  https://github.com/JITESH1101/RISC-V-SoC-Tapeout---WEEK-4/blob/main/DAY3/README.md
 
+
 DAY4- CMOS NOISE MARGIN ROBUSTNESS EVALUATION -  https://github.com/JITESH1101/RISC-V-SoC-Tapeout---WEEK-4/blob/main/DAY4/README.md
 
+
 DAY5- CMOS POWER SUPPLY AND DEVICE VARIATION ROBUSTNESS EVALUATION - https://github.com/JITESH1101/RISC-V-SoC-Tapeout---WEEK-4/blob/main/DAY5/README.md
+
 
 # Conclusion
 
