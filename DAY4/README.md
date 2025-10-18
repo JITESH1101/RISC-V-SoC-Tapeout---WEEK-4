@@ -14,6 +14,8 @@ The fundamental characteristics of a digital inverter and the concept of noise m
 
 ***
 
+<img width="3548" height="2034" alt="Screenshot from 2025-10-17 19-57-18" src="https://github.com/user-attachments/assets/3e556538-e5e1-43b6-aa4a-e44d816513e0" />
+
 ##  Noise Margin Voltage Parameters 
 
 To properly quantify the robustness of an inverter, a set of key voltage parameters from its actual Input/Output (I/O) characteristic curve were defined.
@@ -28,6 +30,9 @@ To properly quantify the robustness of an inverter, a set of key voltage paramet
     * A critical point was made about how $V_{IL}$ and $V_{IH}$ are precisely determined from the VTC graph. They are not arbitrary points but are defined as the specific input voltages where the gain of the inverter, represented by the slope of the curve ($dV_{out}/dV_{in}$), is equal to **-1**. These points mark the boundaries of the high-gain transition region.
 
 ***
+
+<img width="3548" height="2034" alt="Screenshot from 2025-10-17 20-01-08" src="https://github.com/user-attachments/assets/202d7a74-a39f-4d1e-b699-b35e3e718b18" />
+
 
 ##  Noise Margin Equation and Summary 
 
@@ -51,6 +56,9 @@ The previously defined voltage parameters were used to formally derive the equat
     * The key takeaway was that for a signal to be reliably considered a logic '0' or logic '1', any noise present must not cause the voltage to exceed the bounds defined by the $NM_L$ and $NM_H$ ranges, respectively.
 
 ***
+
+<img width="3548" height="2034" alt="Screenshot from 2025-10-17 20-02-39" src="https://github.com/user-attachments/assets/5d76c5f0-e8e2-42bd-bec6-6d4f9d69cd65" />
+
 
 ##  Noise Margin Variation with Respect to PMOS Width 
 
